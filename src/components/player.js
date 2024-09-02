@@ -13,4 +13,8 @@ export class Player {
   get getGameboard() {
     return this.gameboard;
   }
+
+  resetGameboard() {
+    this.gameboard.resetBoard();
+  }
 }

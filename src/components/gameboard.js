@@ -90,4 +90,9 @@ export class Gameboard {
       return false;
     }
   }
+
+  resetBoard() {
+    this.board = this.#boardConstructor(this.size);
+    this.ships = [];
+  }
 }
