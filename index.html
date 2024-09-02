@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Odin Battleship</title>
+  <script defer src="main.js"></script></head>
+  <body>
+    <header>
+      <h1>Odin Battleships</h1>
+    </header>
+    <main>
+      <div id="setup-container">
+        <h2>Place Your Ships</h2>
+        <div id="setup-preview-and-board">
+          <div id="ship-preview-container">
+            <h3>Ship Preview</h3>
+            <div id="ship-preview"></div>
+          </div>
+          <div id="player-setup-board-container">
+            <table id="player-setup-board"></table>
+          </div>
+        </div>
+        <div id="setup-buttons">
+          <button id="rotate-button">Rotate Ship</button>
+          <button id="start-game-button" disabled>Start Game</button>
+        </div>
+      </div>
+      <div id="game-container" style="display: none">
+        <div id="game-boards">
+          <div id="player-game-board-container">
+            <h2>Player</h2>
+            <table id="player-game-board"></table>
+          </div>
+          <div id="opponent-game-board-container">
+            <h2>Opponent</h2>
+            <table id="opponent-game-board"></table>
+          </div>
+        </div>
+        <div>
+          <button type="button" id="reset-button">Reset Game</button>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <p>
+        Created by&nbsp;<a href="https://github.com/JE-Richards">JE Richards</a>
+      </p>
+    </footer>
+  </body>
+</html>
