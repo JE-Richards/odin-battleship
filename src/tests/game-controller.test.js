@@ -9,7 +9,8 @@ jest.mock('../components/gameboard', () => {
       return {
         canPlaceShip: jest.fn().mockReturnValue(true),
         placeShip: jest.fn(),
-        allShipsSunk: true,
+        allShipsSunk: false,
+        resetBoard: jest.fn(),
       };
     }),
   };
@@ -19,12 +20,15 @@ jest.mock('../components/player', () => {
   const { Gameboard } = require('../components/gameboard');
 
   return {
-    Player: jest.fn().mockImplementation(() => ({
-      get getGameboard() {
-        return this._gameboard;
-      },
-      _gameboard: new Gameboard(),
-    })),
+    Player: jest
+      .fn()
+      .mockImplementation((gameboardClass = Gameboard, isHuman) => ({
+        get getGameboard() {
+          return this._gameboard;
+        },
+        _gameboard: new gameboardClass(),
+        isHuman,
+      })),
   };
 });
 
@@ -64,8 +68,7 @@ describe('Testing the game controller (Game) class', () => {
       expect(game).toHaveProperty('whoseTurn', game.playerOne);
     });
 
-    test('Each player should have 5 ships placed on their board when a game is initialised', () => {
-      expect(game.playerOne.getGameboard.placeShip).toHaveBeenCalledTimes(5);
+    test('Player two (the computer) should have 5 ships placed upon initialisation', () => {
       expect(game.playerTwo.getGameboard.placeShip).toHaveBeenCalledTimes(5);
     });
   });
@@ -78,9 +81,8 @@ describe('Testing the game controller (Game) class', () => {
       expect(Player).toHaveBeenCalledTimes(4);
       expect(Gameboard).toHaveBeenCalledTimes(4);
 
-      // Each player should have 5 ships placed again after reset
+      // Player two should have 5 ships placed again after reset
       // 5 calls instead of 10 because it's a new instance of Gameboard
-      expect(game.playerOne.getGameboard.placeShip).toHaveBeenCalledTimes(5);
       expect(game.playerTwo.getGameboard.placeShip).toHaveBeenCalledTimes(5);
     });
   });
@@ -106,6 +108,10 @@ describe('Testing the game controller (Game) class', () => {
 
     test('isGameOver should check if all ships are sunk, then if true change Game.gameOver', () => {
       expect(game.getGameOver).toBe(false);
+
+      // simulate ships being sunk
+      game.playerOne.getGameboard.allShipsSunk = true;
+
       game.isGameOver();
       expect(game.getGameOver).toBe(true);
     });
