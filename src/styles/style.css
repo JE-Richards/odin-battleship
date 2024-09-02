@@ -1,0 +1,169 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+td {
+  width: 30px;
+  height: 30px;
+  border: 1px solid black;
+  cursor: pointer;
+  position: relative;
+}
+
+td.highlight {
+  background-color: lightblue;
+}
+
+.hit {
+  background-color: red;
+}
+
+.miss {
+  background-color: blue;
+}
+
+.placing {
+  background-color: grey;
+}
+
+.ship {
+  background-color: black;
+}
+
+#ship-preview-container {
+  margin-bottom: 20px;
+}
+
+#ship-preview {
+  display: grid;
+  gap: 2px;
+}
+
+.ship-preview {
+  display: grid;
+  grid-template-columns: 30px;
+  grid-template-rows: repeat(auto-fit, 30px);
+}
+
+.ship-preview-tile {
+  width: 30px;
+  height: 30px;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.highlight {
+  background-color: rgba(0, 0, 255, 0.3);
+}
+
+/* Setup container styling */
+#setup-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 100%;
+  max-width: 600px; /* Adjust as needed */
+}
+
+/* Title inside setup container */
+#setup-container h2 {
+  margin-bottom: 20px;
+}
+
+#setup-preview-and-board {
+  display: flex;
+  gap: 20px;
+}
+
+/* Ship preview container styling */
+#ship-preview-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* Player setup board container styling */
+#player-setup-board-container {
+  margin-bottom: 20px;
+}
+
+/* Setup buttons container styling */
+#setup-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* Space between buttons */
+}
+
+/* Button styling */
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  flex: 0 0 auto;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Game container styling */
+#game-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+#game-boards {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+/* Game board containers */
+#player-game-board-container,
+#opponent-game-board-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 45%; /* Adjust as needed */
+}
+
+#player-game-board-container {
+  text-align: center;
+}
+
+#opponent-game-board-container {
+  text-align: center;
+}
